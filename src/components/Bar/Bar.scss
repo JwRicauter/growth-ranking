@@ -1,0 +1,57 @@
+.bar-active {
+    width: 20rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.2s ease-in;
+    height: 100vh;
+    
+    .slider-core {
+        background-color: #333333;
+        button {
+            color: white;
+            float: right;
+            margin-right: 1%;
+            border: none;
+        }
+    }
+
+    .filter-section {
+        background: #333333;
+        padding: 15% 8% 8%;
+        height: 100%;
+
+        select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;       /* Remove default arrow */
+            background: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'><path fill='%23ffffff' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>") right .75rem center/8px 10px no-repeat!important;
+           
+        }
+
+    }
+}
+
+
+.bar-inactive {
+    width: 10em;
+    position: relative;
+    height: 3rem;
+    transition: all 0.4s ease-out;
+
+    .slider-core {
+        background-color: #333333;
+        height: 8%;
+        padding-bottom: 3rem;
+        button {
+            color: white;
+            float: right;
+            margin-right: 10%;
+            border: none;
+        }
+    }
+
+    .filter-section {
+        display: none;
+    }
+
+}
