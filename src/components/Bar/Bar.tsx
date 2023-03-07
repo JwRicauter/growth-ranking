@@ -12,7 +12,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 
 
-export const Bar = () => {
+type Props = {
+	setYear: (year: string) => void;
+	setMeasure: (measure: string) => void;
+	setGrowthPeriod: (growthPeriod: string) => void;
+}
+
+export const Bar = ({setYear, setMeasure, setGrowthPeriod}: Props) => {
 
     const [active, setActive] = useState(true);     /* state variable to toogle the bar */
 
@@ -46,7 +52,7 @@ export const Bar = () => {
 
 
 
-						<h5 className='mt-4 text-white'>
+						<h5 className='mt-3 text-white'>
 							Growth Ranking of U.S. States
 						</h5>
 
@@ -59,6 +65,7 @@ export const Bar = () => {
 						<Form.Select
 							aria-label="Select the year" 
 							className='px-5 bg-transparent text-white'
+							onChange={ (e) => setYear(e.target.value) }
 						>
 							<option value="2019" className='text-dark'>2019</option>
 							<option value="2018" className='text-dark'>2018</option>
@@ -69,13 +76,14 @@ export const Bar = () => {
 
 
 
-						<p className='text-white mb-0 mt-5'>
+						<p className='text-white mb-0 mt-3'>
 							Measure
 						</p>
 
 						<Form.Select
 							aria-label="Select the year" 
 							className='px-5 bg-transparent text-white'
+							onChange={ (e) => setMeasure(e.target.value) }
 						>
 							<option value="Household Income" className='text-dark'>Household Income</option>
 							<option value="Population" className='text-dark'>Population</option>
@@ -84,13 +92,14 @@ export const Bar = () => {
 
 
 
-						<p className='text-white mb-0 mt-5'>
+						<p className='text-white mb-0 mt-3'>
 							Growth Period
 						</p>
 
 						<Form.Select
 							aria-label="Select the year" 
 							className='px-5 bg-transparent text-white'
+							onChange={ (e) => setGrowthPeriod(e.target.value) }
 						>
 							<option value="1 Year" className='text-dark'>1 Year</option>
 							<option value="2 Years" className='text-dark'>2 Years</option>
