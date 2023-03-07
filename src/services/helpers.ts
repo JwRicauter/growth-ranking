@@ -58,7 +58,7 @@ export const growthCalculation = (data: Record<string, number>, year: string, st
  * 
  * @returns data Array that have the growth from the starting to the selected year
  */
-export const orderByGrowth = (data: Record<string, number>[], year: string, startingYear: string) => {
+export const orderByGrowth = (data: Record<string, number>[], year: string, startingYear: string, measure: string) => {
 
 
     let statesDict : Record<string, Record<string, number> > = {}
@@ -66,7 +66,7 @@ export const orderByGrowth = (data: Record<string, number>[], year: string, star
 			if (statesDict[item['Slug State']] == undefined) {
 				statesDict[item['Slug State']] = {}
 			} 
-			statesDict[item['Slug State']][item['ID Year']] = item['Property Value']
+			statesDict[item['Slug State']][item['ID Year']] = item[measure]
 
 			if(Object.keys(statesDict[item['Slug State']]).length === 2) {
 				statesDict[item['Slug State']]['growth'] = growthCalculation(statesDict[item['Slug State']], year, startingYear)
@@ -76,7 +76,7 @@ export const orderByGrowth = (data: Record<string, number>[], year: string, star
 
     let items : any = Object.keys(statesDict).map( (key) => { return [key, statesDict[key]] });
     items.sort(
-      (first: any, second: any) => { return first[1].growth - second[1].growth }
+      (first: any, second: any) => { return second[1].growth - first[1].growth }
     );
 
     return items
@@ -84,3 +84,13 @@ export const orderByGrowth = (data: Record<string, number>[], year: string, star
 
 }
 
+/**
+ * Format a number with commas
+ *
+ * @param number Number to convert
+ * 
+ * @returns number formatted with commas as a string
+ */
+export const numberWithCommas = (number: number) => {
+	return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
