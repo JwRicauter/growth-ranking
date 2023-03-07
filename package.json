@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "@jest/globals": "^29.5.0",
     "dotenv": "^16.0.3"
   }
 }

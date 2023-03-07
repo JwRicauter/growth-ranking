@@ -24,7 +24,7 @@ export const getStartingYear = ({year, growthPeriod}: Pick<Params, 'year' | 'gro
  *
  * @param year Selected year
  * @param measure Type of measurement to calculate
- * @param growthPeriod Period of one, two or three years back
+ * @param startingYear year to start to count
  * 
  * @returns uriConstruct string of the uri to request
  */
@@ -60,14 +60,13 @@ export const growthCalculation = (data: Record<string, number>, year: string, st
  */
 export const orderByGrowth = (data: Record<string, number>[], year: string, startingYear: string, measure: string) => {
 
-
     let statesDict : Record<string, Record<string, number> > = {}
     data.forEach(function (item, index) {
 			if (statesDict[item['Slug State']] == undefined) {
 				statesDict[item['Slug State']] = {}
 			} 
 			statesDict[item['Slug State']][item['ID Year']] = item[measure]
-
+      
 			if(Object.keys(statesDict[item['Slug State']]).length === 2) {
 				statesDict[item['Slug State']]['growth'] = growthCalculation(statesDict[item['Slug State']], year, startingYear)
 			}
@@ -80,7 +79,6 @@ export const orderByGrowth = (data: Record<string, number>[], year: string, star
     );
 
     return items
-
 
 }
 
