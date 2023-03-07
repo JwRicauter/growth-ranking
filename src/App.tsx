@@ -1,12 +1,10 @@
-import { Bar } from './components/Bar/Bar';
-import logo from './logo.svg';
-import './global.scss';
+import { Home } from './pages/Home';
 
 
 function App() {
   return (
     <div className="App">
-      <Bar />
+      <Home />
     </div>
   );
 }

@@ -7,8 +7,6 @@ type Params = {
 	signal: AbortSignal;
 }
 
-
-
 export const getData = async ({year, measure, growthPeriod, signal}: Params)  => {
 	
 	let startingYear = getStartingYear({year, growthPeriod})
@@ -19,7 +17,7 @@ export const getData = async ({year, measure, growthPeriod, signal}: Params)  =>
 		signal: signal
 	}).then(res => res.json())
 	.then(res => {
-		return orderByGrowth(res.data, year, startingYear) 
+		return orderByGrowth(res.data, year, startingYear, measure) 
 	}).catch(
 		err => {return err}
 	)
